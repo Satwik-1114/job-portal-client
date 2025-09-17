@@ -44,7 +44,7 @@ const Login = () => {
             handleFetchMe();
 
             reset();
-            navigate("/job/all-jobs/dashboard");
+            navigate("/");
             // navigate("/dashboard");
         } catch (error) {
             Swal.fire({
