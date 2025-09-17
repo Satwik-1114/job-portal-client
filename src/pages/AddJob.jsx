@@ -27,6 +27,7 @@ const AddJob = () => {
     const [skills, setSkills] = useState([]);
     const [skillInput, setSkillInput] = useState("");
     const [facilities, setFacilities] = useState([]);
+    const [facilityInput, setFacilityInput] = useState("");
 
     const {
         register,
@@ -91,6 +92,12 @@ const AddJob = () => {
         }
     };
 
+    const handleAddFacility = () => {
+        if (facilityInput.trim() && !facilities.includes(facilityInput.trim())) {
+            setFacilities([...facilities, facilityInput.trim()]);
+            setFacilityInput("");
+        }
+    };
     return (
         <Wrapper>
             <div className="">
@@ -394,18 +401,23 @@ const AddJob = () => {
                             </div>
                             <div className="row gap-y-2">
                                 <label htmlFor="position">Job Facilities</label>
-                                <TagsInput
-                                    value={facilities}
-                                    onChange={setFacilities}
-                                    name="facilities"
-                                    placeHolder="Type here"
-                                    separators={["Enter", ","]}
-                                    onRemoved={["Backspace"]}
-                                    classNames={{
-                                        tag: "tag-cls",
-                                        input: "input-cls",
-                                    }}
-                                />
+                                <div style={{ display: 'flex', gap: '8px' }}>
+                                    <input
+                                        type="text"
+                                        className="input-cls"
+                                        value={facilityInput}
+                                        onChange={e => setFacilityInput(e.target.value)}
+                                        placeholder="Type here"
+                                    />
+                                    <button type="button" style={{ padding: '5px 10px', borderRadius: '4px', background: 'var(--color-primary)', color: '#fff', border: 'none' }} onClick={handleAddFacility}>
+                                        Add Facility
+                                    </button>
+                                </div>
+                                <div style={{ marginTop: '8px', display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                                    {facilities.map((facility, idx) => (
+                                        <span key={idx} style={{ background: '#eee', padding: '4px 8px', borderRadius: '4px', fontSize: '13px' }}>{facility}</span>
+                                    ))}
+                                </div>
                             </div>
                         </div>
 
