@@ -13,11 +13,11 @@ const Navbar = ({ navbarRef }) => {
                     <NavLink className="nav-item" to="/all-jobs">
                         Jobs
                     </NavLink>
-                    <NavLink className="nav-item hidden sm:block" to="/dashboard">
+                    <NavLink className="nav-item" to="/dashboard">
                         Dashboard
                     </NavLink>
                     <NavLink className="nav-item" to="/login">
-                        <span className="bg-[#247BF7] text-white px-6 py-2 rounded"> Login</span>
+                        <span className="bg-[#d91512] text-white px-6 py-2 rounded"> Login</span>
                     </NavLink>
                 </div>
             </div>
