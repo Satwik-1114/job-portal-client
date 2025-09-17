@@ -25,6 +25,7 @@ const AddJob = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [deadline, setDeadline] = useState(new Date());
     const [skills, setSkills] = useState([]);
+    const [skillInput, setSkillInput] = useState("");
     const [facilities, setFacilities] = useState([]);
 
     const {
@@ -81,6 +82,13 @@ const AddJob = () => {
             });
         }
         setIsLoading(false);
+    };
+
+    const handleAddSkill = () => {
+        if (skillInput.trim() && !skills.includes(skillInput.trim())) {
+            setSkills([...skills, skillInput.trim()]);
+            setSkillInput("");
+        }
     };
 
     return (
@@ -365,21 +373,24 @@ const AddJob = () => {
                         {/* Tag inputs */}
                         <div className="flex flex-col  min-[600px]:flex-row  justify-between items-center gap-4 mt-5">
                             <div className="row gap-y-2">
-                                <label htmlFor="position">
-                                    Required Skills
-                                </label>
-                                <TagsInput
-                                    value={skills}
-                                    onChange={setSkills}
-                                    name="skills"
-                                    placeHolder="HTML, CSS"
-                                    separators={["Enter", ","]}
-                                    onRemoved={["Backspace"]}
-                                    classNames={{
-                                        tag: "tag-cls",
-                                        input: "input-cls",
-                                    }}
-                                />
+                                <label htmlFor="position">Required Skills</label>
+                                <div style={{ display: 'flex', gap: '8px' }}>
+                                    <input
+                                        type="text"
+                                        className="input-cls"
+                                        value={skillInput}
+                                        onChange={e => setSkillInput(e.target.value)}
+                                        placeholder="HTML, CSS"
+                                    />
+                                    <button type="button" style={{ padding: '5px 10px', borderRadius: '4px', background: 'var(--color-primary)', color: '#fff', border: 'none' }} onClick={handleAddSkill}>
+                                        Add Skill
+                                    </button>
+                                </div>
+                                <div style={{ marginTop: '8px', display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                                    {skills.map((skill, idx) => (
+                                        <span key={idx} style={{ background: '#eee', padding: '4px 8px', borderRadius: '4px', fontSize: '13px' }}>{skill}</span>
+                                    ))}
+                                </div>
                             </div>
                             <div className="row gap-y-2">
                                 <label htmlFor="position">Job Facilities</label>
