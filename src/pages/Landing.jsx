@@ -5,9 +5,6 @@ import photo from "../assets/media/LandingPage/hero.png";
 import Navbar from "../components/shared/Navbar";
 import PopularCategory from "../components/Home Page/PopularCategory";
 import HowWorks from "../components/Home Page/HowWorks";
-import Team from "../components/Home Page/Team";
-import Brands from "../components/Home Page/Brands";
-import Testimonial from "../components/Home Page/Testimonial";
 
 const Landing = () => {
     const navbarRef = useRef(null);
@@ -48,9 +45,6 @@ const Landing = () => {
             <div>
             <PopularCategory/>
             <HowWorks/>
-            <Team/>
-            <Testimonial/>
-            <Brands/>
             </div>
         </>
     );
